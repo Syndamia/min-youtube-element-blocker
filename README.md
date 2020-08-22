@@ -9,7 +9,7 @@ Block specific elements of YouTube, like the Feed, Comments, Subscriptions bar a
 
 If you are on Linux, you can use this command for steps 1 and 2:
 ```
-mkdir -p ~/.config/Min/userscripts && wget https://raw.githubusercontent.com/Syndamia/min-youtube-element-blocker/master/youtube-element-blocker.js -P ~/.config/Min/userscripts/
+mkdir -p ~/.config/Min/userscripts && wget -q https://raw.githubusercontent.com/Syndamia/min-youtube-element-blocker/master/youtube-element-blocker.js -O ~/.config/Min/userscripts/youtube-element-blocker.js
 ```
 
 ## Changing settings
