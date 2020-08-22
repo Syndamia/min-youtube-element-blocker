@@ -2,7 +2,7 @@
 // @name        YouTube element blocker
 // @namespace   Syndamia
 // @description Block specific elements of YouTube, like the Feed, Comments, Subscriptions bar and more
-// @version     1.0
+// @version     1.1
 // @author      Kamen Mladenov
 // @match       *youtube.com*
 // @run-at      document-start
@@ -20,9 +20,6 @@
 var settings = {
   // Hides the home page videos
   "hideFeed"             : false,
-
-  // Hides recommended tabs of videos in the home page
-  "hideRecommended"      : false,
 
   // Hides the trending button on the left (subscriptions) sidebar
   "hideTrendingTab"      : false,
@@ -56,11 +53,6 @@ var css = {
   "hideFeed": `
     #feed, ytd-browse[page-subtype=home] {
         display: none !important;
-    }`,
-
-  "hideRecommended": `
-    #feed .section-list > li:first-child, ytd-browse ytd-item-section-renderer:first-child {
-      display: none;
     }`,
 
   "hideTrendingTab": `
