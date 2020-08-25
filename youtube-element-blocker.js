@@ -2,74 +2,67 @@
 // @name        YouTube element blocker
 // @namespace   Syndamia
 // @description Block specific elements of YouTube, like the Feed, Comments, Subscriptions bar and more
-// @version     1.1
+// @version     1.2
 // @author      Kamen Mladenov
 // @match       *youtube.com*
 // @run-at      document-start
 // ==/UserScript==
 
-/* Create (or find) an issue if you have any questions or problems 
+/* For suggestions, questions and reporting problems, 
+ * open (if not existing) a new issue
  * here: https://github.com/Syndamia/min-youtube-element-blocker/issues.
  */
 
-/* Selecting and deselecting a setting is done by changing the word after the column and restarting your browser.
- * Use 'true' for activating and 'false' for deactivating.
+/* Change the word after the name of a setting (and after the column character)
+ * to true to enable it and to false to disable it (DO NOT REMOVE THE COMMA AFTER THE WORD)
  * For example, enabled hideFeed will look like this: "hideFeed" : true,
  */
 
 var settings = {
-  // Hides the home page videos
-  "hideFeed"             : false,
+  // The feed is the collection of videos, shown on the home page
+  "hideFeed"        : false,
 
-  // Hides the trending button on the left (subscriptions) sidebar
-  "hideTrendingTab"      : false,
+  // The guide drawer is the drawer (sidebar) to the left
+  // which you use for navigating Playlists, Subscriptions, ...
+  "hideGuideDrawer" : false,
 
-  // Hides the left (subscriptions) sidebar
-  "hideSubscriptionsBar" : false,
+    "hideGuideHomeTab"         : false,
 
-  // Hides the video recommendations at the end of the video
-  "hideRelated"          : false,
+    "hideGuideTrendingTab"     : false,
 
-  // Hides the right sidebar (recommendations to videos)
-  "hideSidebar"          : false,
+    "hideGuideMoreFromYouTube" : false,
 
-  // Hides livestream chat
-  "hideChat"             : false,
+    // The last section is the part under "More from YouTube",
+    // where you can find the buttons for "Help", "Send Feedback", ...
+    "hideGuideLastSection"     : false,
 
-  // Hides merch button
-  "hideMerch"            : false,
+    // The footer is the part at the very bottom of the guide drawer 
+    // that shows links like "About", "Terms", "Contact us", ...
+    "hideGuideFooter"          : false,
 
-  // Hides video comments
-  "hideComments"         : false
-}
+  // Related videos are the recommendations at the end of a video
+  "hideRelated"  : false,
 
-/* This userscript works by adding specific CSS that prevents certain
- * elements from being displayed.
- *
- * CSS specifics are taken from DF Tube (https://chrome.google.com/webstore/detail/df-tube-distraction-free/mjdepdfccjgcndkmemponafgioodelna)
- */
+  "hideChat"     : false,
+
+  // The sidebar is the section to the right of a video
+  // where you can find video and playlist suggestions
+  "hideSidebar"  : false,
+
+  "hideMerch"    : false,
+
+  "hideComments" : false,
+};
+
+/* CSS that is added to page for hiding the elements */
 
 var css = {
   "hideFeed": `
     #feed, ytd-browse[page-subtype=home] {
-        display: none !important;
-    }`,
-
-  "hideTrendingTab": `
-    #trending-guide-item {
-      display: none;
-    }
-    ytd-guide-section-renderer:nth-child(1) #items > ytd-guide-entry-renderer:nth-child(2) {
-      display: none;
-    }
-    #appbar-nav li:nth-child(2) {
-      display: none !important;
-    }
-    ytd-mini-guide-renderer #items ytd-mini-guide-entry-renderer:nth-child(2) {
       display: none !important;
     }`,
 
-  "hideSubscriptionsBar": `
+  "hideGuideDrawer": `
     #appbar-guide-menu {
       width: 0; 
     }
@@ -78,6 +71,52 @@ var css = {
     }
     ytd-mini-guide-renderer {
       display: none !important; 
+    }
+    #guide-button {
+      display: none !important;
+    }`,
+
+  "hideGuideHomeTab": `
+    #home-guide-item {
+      display: none !important;
+    }
+    ytd-guide-section-renderer:first-child #items > ytd-guide-entry-renderer:first-child {
+      display: none !important;
+    }
+    #appbar-nav li:first-child {
+      display: none !important;
+    }
+    ytd-mini-guide-renderer #items ytd-mini-guide-entry-renderer:first-child {
+      display: none !important;
+    }`,
+
+  "hideGuideTrendingTab": `
+    #trending-guide-item {
+      display: none !important;
+    }
+    ytd-guide-section-renderer:first-child #items > ytd-guide-entry-renderer:nth-child(2) {
+      display: none !important;
+    }
+    #appbar-nav li:nth-child(2) {
+      display: none !important;
+    }
+    ytd-mini-guide-renderer #items ytd-mini-guide-entry-renderer:nth-child(2) {
+      display: none !important;
+    }`,
+
+  "hideGuideMoreFromYouTube": `
+    ytd-guide-section-renderer:nth-last-child(2) {
+      display: none !important;
+    }`,
+
+  "hideLastSection": `
+    ytd-guide-section-renderer:last-child {
+      display: none !important;
+    }`,
+
+  "hideFooter": `
+    #footer {
+      display: none !important;
     }`,
 
   "hideRelated": `
@@ -88,19 +127,19 @@ var css = {
       display: none !important;
     }`,
 
-  "hideSidebar": `
-    #watch7-sidebar-contents, #related {
-      display: none !important;
-    }`,
-
   "hideChat": `
     ytd-live-chat-frame {
         display: none !important;
     }`,
 
+  "hideSidebar": `
+    #watch7-sidebar-contents, #related {
+      display: none !important;
+    }`,
+
   "hideMerch": `
     .ytd-merch-shelf-renderer {
-        display: none !important;
+      display: none !important;
     }`,
 
   "hideComments": `
