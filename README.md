@@ -18,33 +18,30 @@ Changing settings is done through **modifying the downloaded file and restarting
 
 ```
 var settings = {
-  // Hides the home page videos
-  "hideFeed"             : false,
-
-  // Hides recommended tabs of videos in the home page
-  "hideRecommended"      : false,
-
-  // Hides the trending button on the left (subscriptions) sidebar
-  "hideTrendingTab"      : false,
-
-  // Hides the left (subscriptions) sidebar
-  "hideSubscriptionsBar" : false,
-
-  // Hides the video recommendations at the end of the video
-  "hideRelated"          : false,
-
-  // Hides the right sidebar (recommendations to videos)
-  "hideSidebar"          : false,
-
-  // Hides livestream chat
-  "hideChat"             : false,
-
-  // Hides merch button
-  "hideMerch"            : false,
-
-  // Hides video comments
-  "hideComments"         : false
+   // Hides the home page videos
+   "hideFeed"             : false,
+ 
+   // Hides the trending button on the left (subscriptions) sidebar
+   "hideTrendingTab"      : true,
+ 
+   // Hides the left (subscriptions) sidebar
+   "hideSubscriptionsBar" : false,
+ 
+   // Hides the video recommendations at the end of the video
+   "hideRelated"          : false,
+ 
+   // Hides the right sidebar (recommendations to videos)
+   "hideSidebar"          : false,
+ 
+   // Hides livestream chat
+   "hideChat"             : false,
+ 
+   // Hides merch button
+   "hideMerch"            : true,
+ 
+   // Hides video comments
+   "hideComments"         : false
 }
-
 ```
-Here, you change the words `false` to `true` if you want the setting to be active. Leaving it, or changing it back to `false` will deactivate the setting.
+
+Here, you change the words `false` to `true` if you want the setting to be active. Leaving it, or changing it back to `false` will deactivate the setting. Finally, restart the browser.
