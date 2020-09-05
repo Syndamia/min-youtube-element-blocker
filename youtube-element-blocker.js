@@ -2,28 +2,28 @@
 // @name        YouTube element blocker
 // @namespace   Syndamia
 // @description Block specific elements of YouTube, like the Feed, Comments, Subscriptions bar and more
-// @version     1.3
+// @version     1.4
 // @author      Kamen Mladenov
 // @match       *youtube.com*
 // @run-at      document-start
 // ==/UserScript==
 
 /* For suggestions, questions and reporting problems, 
- * open (if not existing) a new issue
- * here: https://github.com/Syndamia/min-youtube-element-blocker/issues.
+ * open (if it doesn't exist) a new issue here: 
+ * https://github.com/Syndamia/min-youtube-element-blocker/issues
  */
 
-/* Change the word after the name of a setting (and after the column character)
- * to true to enable it and to false to disable it (DO NOT REMOVE THE COMMA AFTER THE WORD)
+/* Change the word after the name of a setting (and after the column character) to
+ * true to enable it and to false to disable it (DO NOT REMOVE THE COMMA AFTER THE WORD)
  * For example, enabled hideFeed will look like this: "hideFeed" : true,
  */
 
-var settings = {
+var generalSettings = {
   // The feed is the collection of videos, shown on the home page
   "hideFeed"        : false,
 
   // The guide drawer is the drawer (sidebar) to the left
-  // which you use for navigating Playlists, Subscriptions, ...
+  // which is used for navigating Playlists, Subscriptions, ...
   "hideGuideDrawer" : false,
 
     "hideGuideHomeTab"         : false,
@@ -53,6 +53,31 @@ var settings = {
 
   "hideComments" : false,
 };
+
+/* The whole YouTube website can also be blocked (independadly of the other settings)
+ * depending on the time of day and the day in the week. This feature is called timeout.
+ */
+
+var timeout = {
+  "enabled"    : false,
+  // Determines days, in which the timeout will be active. Each day is separated
+  // by a comma. Can be 0 to 6, where 0 is Sunday, 1 is Monday and 6 is Saturday.
+  "activeDays" : [0, 1, 2, 3, 4, 5, 6],
+
+  // Determines time from which the timeout will block YouTube.
+  // Must be numbers, from 0 to 24 for hour and from 0 to 59 for minutes.
+  "startHour"    : 09,
+  "startMinutes" : 00,
+
+  // Determines end of time from which the timeout will block YouTube.
+  // Must be numbers, from 0 to 24 for hour and from 0 to 59 for minutes.
+  "endHour"    : 17,
+  "endMinutes" : 00,
+};
+
+/************************************/
+/* END OF USER CONFIGURABLE OPTIONS */
+/************************************/
 
 /* CSS that is added to page for hiding the elements */
 
@@ -151,10 +176,26 @@ var css = {
 // Element, that will contain CSS of activated settings
 var style = document.createElement('style');
 
-for (setting in settings) {
-  if (!settings[setting]) continue;
+if(timeout["enabled"]) {
+  var now = new Date(), 
+      start = new Date(), 
+      end = new Date();
+
+  start.setHours(timeout["startHour"], timeout["startMinutes"], 0);
+  end.setHours(timeout["endHour"], timeout["endMinutes"], 0);
+
+  if (now >= start && now < end && timeout["activeDays"].includes(now.getDay())) {
+    style.textContent = "body { display: none !important; }"
+  }
+}
+
+// Execute general settings, only if the timeout isn't active
+if (style.textContent === "") {
+  for (setting in generalSettings) {
+    if (!generalSettings[setting]) continue;
   
-  style.textContent += css[setting];
+    style.textContent += css[setting];
+  }
 }
 
 document.head.appendChild(style);
