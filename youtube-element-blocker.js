@@ -54,7 +54,7 @@ var generalSettings = {
   "hideComments" : false,
 };
 
-/* The whole YouTube website can also be blocked (independadly of the other settings)
+/* The whole YouTube website can also be blocked (independently of the other settings)
  * depending on the time of day and the day in the week. This feature is called timeout.
  */
 
