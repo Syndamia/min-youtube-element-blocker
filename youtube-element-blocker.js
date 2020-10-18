@@ -2,9 +2,9 @@
 // @name        YouTube element blocker
 // @namespace   Syndamia
 // @description Block specific elements of YouTube, like the Feed, Comments, Subscriptions bar and more
-// @version     1.4
+// @version     1.4.1
 // @author      Kamen Mladenov
-// @match       *youtube.com*
+// @match       *://*.youtube.com/*
 // @run-at      document-start
 // ==/UserScript==
 
