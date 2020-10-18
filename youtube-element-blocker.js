@@ -191,7 +191,7 @@ if(timeout["enabled"]) {
 
 // Execute general settings, only if the timeout isn't active
 if (style.textContent === "") {
-  for (setting in generalSettings) {
+  for (var setting in generalSettings) {
     if (!generalSettings[setting]) continue;
   
     style.textContent += css[setting];
