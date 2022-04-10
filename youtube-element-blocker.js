@@ -1,17 +1,20 @@
 // ==UserScript==
 // @name        YouTube element blocker
-// @namespace   Syndamia
 // @description Block specific elements of YouTube, like the Feed, Comments, Subscriptions bar and more
-// @version     1.4.1
-// @author      Kamen Mladenov
+//
+// @version     1.5.0
+// @license     MIT
+// @author      Syndamia
+//
+// @source      https://github.com/Syndamia/min-youtube-element-blocker
+// @supportURL  https://github.com/Syndamia/min-youtube-element-blocker/issues
+// @homepage    https://greasyfork.org/en/scripts/419701-youtube-element-blocker
+// @icon        https://upload.wikimedia.org/wikipedia/commons/1/1a/YouTube_play_button_dark_rounded_square_%282013-2017%29.svg
+//
+// @namespace   Syndamia
 // @match       *://*.youtube.com/*
 // @run-at      document-start
 // ==/UserScript==
-
-/* For suggestions, questions and reporting problems,
- * open (if it doesn't exist) a new issue here:
- * https://github.com/Syndamia/min-youtube-element-blocker/issues
- */
 
 /* Change the word after the name of a setting (and after the column character) to
  * true to enable it and to false to disable it (DO NOT REMOVE THE COMMA AFTER THE WORD)
