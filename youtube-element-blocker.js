@@ -70,13 +70,13 @@ var timeout = {
 
   // Determines time from which the timeout will block YouTube.
   // Must be numbers, from 0 to 24 for hour and from 0 to 59 for minutes.
-  "startHour"    : 09,
-  "startMinutes" : 00,
+  "startHour"    : 9,
+  "startMinutes" : 0,
 
   // Determines end of time from which the timeout will block YouTube.
   // Must be numbers, from 0 to 24 for hour and from 0 to 59 for minutes.
   "endHour"    : 17,
-  "endMinutes" : 00,
+  "endMinutes" : 0,
 };
 
 /************************************/
@@ -196,15 +196,15 @@ var css = {
 // Element, that will contain CSS of activated settings
 var style = document.createElement('style');
 
-if(timeout["enabled"]) {
+if(timeout.enabled) {
   var now = new Date(), 
       start = new Date(), 
       end = new Date();
 
-  start.setHours(timeout["startHour"], timeout["startMinutes"], 0);
-  end.setHours(timeout["endHour"], timeout["endMinutes"], 0);
+  start.setHours(timeout.startHour, timeout.startMinutes, 0);
+  end.setHours(timeout.endHour, timeout.endMinutes, 0);
 
-  if (now >= start && now < end && timeout["activeDays"].includes(now.getDay())) {
+  if (now >= start && now < end && timeout.activeDays.includes(now.getDay())) {
     style.textContent = "body { display: none !important; }"
   }
 }
