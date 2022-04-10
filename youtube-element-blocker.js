@@ -30,6 +30,10 @@ var generalSettings = {
 
     "hideGuideTrendingTab"     : false,
 
+    "hideGuideShortsTab"       : false,
+
+    "hideGuideLibraryTab"      : false,
+
     "hideGuideMoreFromYouTube" : false,
 
     // The last section is the part under "More from YouTube",
@@ -129,6 +133,22 @@ var css = {
       display: none !important;
     }`,
 
+  "hideGuideShortsTab": `
+    ytd-guide-section-renderer:first-child #items > ytd-guide-entry-renderer:nth-child(3) {
+      display: none !important;
+    }
+    #appbar-nav li:nth-child(3) {
+      display: none !important;
+    }
+    ytd-mini-guide-renderer #items ytd-mini-guide-entry-renderer:nth-child(3) {
+      display: none !important;
+    }`,
+
+  "hideGuideLibraryTab" : `
+    ytd-guide-section-renderer:first-child #items > ytd-guide-collapsible-section-entry-renderer > #header {
+      display: none !important;
+    }`,
+
   "hideGuideMoreFromYouTube": `
     ytd-guide-section-renderer:nth-last-child(2) {
       display: none !important;
@@ -199,4 +219,3 @@ if (style.textContent === "") {
 }
 
 document.head.appendChild(style);
-
