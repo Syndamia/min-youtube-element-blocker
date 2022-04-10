@@ -8,8 +8,8 @@
 // @run-at      document-start
 // ==/UserScript==
 
-/* For suggestions, questions and reporting problems, 
- * open (if it doesn't exist) a new issue here: 
+/* For suggestions, questions and reporting problems,
+ * open (if it doesn't exist) a new issue here:
  * https://github.com/Syndamia/min-youtube-element-blocker/issues
  */
 
@@ -40,7 +40,7 @@ var generalSettings = {
     // where you can find the buttons for "Help", "Send Feedback", ...
     "hideGuideLastSection"     : false,
 
-    // The footer is the part at the very bottom of the guide drawer 
+    // The footer is the part at the very bottom of the guide drawer
     // that shows links like "About", "Terms", "Contact us", ...
     "hideGuideFooter"          : false,
 
@@ -93,13 +93,13 @@ var css = {
 
   "hideGuideDrawer": `
     #appbar-guide-menu {
-      width: 0; 
+      width: 0;
     }
     app-drawer#guide {
       display: none !important;
     }
     ytd-mini-guide-renderer {
-      display: none !important; 
+      display: none !important;
     }
     #guide-button {
       display: none !important;
@@ -189,7 +189,7 @@ var css = {
 
   "hideComments": `
     #watch-discussion, #comments {
-      display: none !important; 
+      display: none !important;
     }`,
 };
 
@@ -197,8 +197,8 @@ var css = {
 var style = document.createElement('style');
 
 if(timeout.enabled) {
-  var now = new Date(), 
-      start = new Date(), 
+  var now = new Date(),
+      start = new Date(),
       end = new Date();
 
   start.setHours(timeout.startHour, timeout.startMinutes, 0);
@@ -213,7 +213,7 @@ if(timeout.enabled) {
 if (style.textContent === "") {
   for (var setting in generalSettings) {
     if (!generalSettings[setting]) continue;
-  
+
     style.textContent += css[setting];
   }
 }
