@@ -59,8 +59,13 @@ var generalSettings = {
   "hideMerch"    : false,
 
   "hideComments" : false,
+      
+ // Hide masthead to make comments at top of page visible when printing - note: also loses navigation button. Can hide 'skip navigation' button only;
+   "hideMasthead": false,
+   
+   "hideSkipNavButton": false,
 };
-
+     
 /* The whole YouTube website can also be blocked (independently of the other settings)
  * depending on the time of day and the day in the week. This feature is called timeout.
  */
@@ -192,6 +197,15 @@ var css = {
 
   "hideComments": `
     #watch-discussion, #comments {
+      display: none !important;
+    }`,
+       "hideSkipNavButton": `
+    #skip-navigation.ytd-masthead {
+      display: none !important;
+    }`,
+
+    "hideMasthead": `
+        #container.ytd-masthead {
       display: none !important;
     }`,
 };
