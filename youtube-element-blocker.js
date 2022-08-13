@@ -2,7 +2,7 @@
 // @name        YouTube element blocker
 // @description Block specific elements of YouTube, like the Feed, Comments, Subscriptions bar and more
 //
-// @version     1.5.0
+// @version     1.5.1
 // @license     MIT
 // @author      Syndamia
 //
@@ -59,8 +59,9 @@ var generalSettings = {
   "hideMerch"    : false,
 
   "hideComments" : false,
-      
- // Hide masthead to make comments at top of page visible when printing - note: also loses navigation button. Can hide 'skip navigation' button only;
+
+   // Makes comments at the top of the page visible when printing
+   // Note: also loses navigation button. Can hide 'skip navigation' button only.
    "hideMasthead": false,
    
    "hideSkipNavButton": false,

@@ -66,6 +66,12 @@ var settings = {
   "hideMerch"    : false,
 
   "hideComments" : false,
+
+   // Makes comments at the top of the page visible when printing
+   // Note: also loses navigation button. Can hide 'skip navigation' button only.
+   "hideMasthead": false,
+   
+   "hideSkipNavButton": false,
 };
 ```
 
