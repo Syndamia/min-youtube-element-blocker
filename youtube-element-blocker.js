@@ -2,7 +2,7 @@
 // @name        YouTube element blocker
 // @description Block specific elements of YouTube, like the Feed, Comments, Subscriptions bar and more
 //
-// @version     1.5.1
+// @version     1.5.2
 // @license     MIT
 // @author      Syndamia
 //
