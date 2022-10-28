@@ -132,9 +132,6 @@ var css = {
     #trending-guide-item {
       display: none !important;
     }
-    ytd-guide-section-renderer:first-child #items > ytd-guide-entry-renderer:nth-child(2) {
-      display: none !important;
-    }
     #appbar-nav li:nth-child(2) {
       display: none !important;
     }
@@ -143,7 +140,7 @@ var css = {
     }`,
 
   "hideGuideShortsTab": `
-    ytd-guide-section-renderer:first-child #items > ytd-guide-entry-renderer:nth-child(3) {
+    ytd-guide-section-renderer:first-child #items > ytd-guide-entry-renderer:nth-child(2) {
       display: none !important;
     }
     #appbar-nav li:nth-child(3) {
